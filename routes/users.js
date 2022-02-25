@@ -23,7 +23,7 @@ router.put("/:id", async (req, res) => {
             return res.status(500).json("Something went wrong with updating your profile")
         }
     } else {
-        return res.status(403).json("You have no authorization to update this user.")
+        return res.status(403).json("You cannot authorize to update this user.")
     }
 })
 // Delete User
