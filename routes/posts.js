@@ -92,7 +92,7 @@ router.get("/feed/:userId", async (req, res) => {
 router.get("/profile/:username", async (req, res) => {
     try {
         const user = await User.find({ username: req.params.username })
-        const posts = await Post.find({ userId: user._id })
+        const posts = await Post.find({ userId: user[0]._id })
         res.status(200).json(posts)
     } catch (err) {
         res.status(500).json("Something went wrong.")
