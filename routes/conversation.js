@@ -29,4 +29,18 @@ router.get("/:userId", async (req, res) => {
     }
 })
 
+// Get conv includes 2 userID
+
+router.get("/find/:firstUserId/:secondUserId", async (req, res) => {
+    try {
+        const conv = await Conversation.findOne({
+            members: { $all: [req.params.firstUserId, req.params.secondUserId] }
+        })
+
+        res.status(200).json(conv)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router;
